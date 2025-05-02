@@ -1,4 +1,4 @@
-# Football Transfer Market Analysis Project
+# Football Transfer Market Analysis
 
 This project was developed as part of COSC526: Data Engineering to analyze professional football (soccer) transfer market data using Apache Spark and machine learning techniques.
 
@@ -12,55 +12,6 @@ The project focuses on:
 - Player performance impact on transfer values
 - Prediction of missing transfer fees using machine learning
 
-```mermaid
-classDiagram
-direction LR
-competitions --|> games : competition_id
-competitions --|> clubs : domestic_competition_id
-clubs --|> players : current_club_id
-clubs --|> club_games : opponent/club_id
-clubs --|> game_events : club_id
-players --|> appearances : player_id
-players --|> game_events : player_id
-players --|> player_valuations : player_id
-games --|> appearances : game_id
-games --|> game_events : game_id
-games --|> clubs : home/away_club_id
-games --|> club_games : game_id
-class competitions {
- competition_id
-}
-class games {
-    game_id
-    home/away_club_id
-    competition_id
-}
-class game_events {
-    game_id
-    player_id
-}
-class clubs {
-    club_id
-    domestic_competition_id
-}
-class club_games {
-    club_id
-    opponent_club_id
-    game_id
-}
-class players {
-    player_id
-    current_club_id
-}
-class player_valuations{
-    player_id
-}
-class appearances {
-    appearance_id
-    player_id
-    game_id
-}
-```
 
 ## Getting Started
 
@@ -135,6 +86,58 @@ The dataset consists of multiple CSV files with relationships shown in the diagr
 - `players.csv`: Player details
 - `transfers.csv`: Transfer information
 - `player_valuations.csv`: Historical market valuations
+
+The dataset provides a rich source of information for analyzing football transfer market dynamics. It includes detailed records of player appearances, club affiliations, match data, and historical market valuations. These interconnected datasets enable comprehensive insights into player performance, club strategies, and transfer fee trends.
+
+```mermaid
+classDiagram
+direction LR
+competitions --|> games : competition_id
+competitions --|> clubs : domestic_competition_id
+clubs --|> players : current_club_id
+clubs --|> club_games : opponent/club_id
+clubs --|> game_events : club_id
+players --|> appearances : player_id
+players --|> game_events : player_id
+players --|> player_valuations : player_id
+games --|> appearances : game_id
+games --|> game_events : game_id
+games --|> clubs : home/away_club_id
+games --|> club_games : game_id
+class competitions {
+ competition_id
+}
+class games {
+    game_id
+    home/away_club_id
+    competition_id
+}
+class game_events {
+    game_id
+    player_id
+}
+class clubs {
+    club_id
+    domestic_competition_id
+}
+class club_games {
+    club_id
+    opponent_club_id
+    game_id
+}
+class players {
+    player_id
+    current_club_id
+}
+class player_valuations{
+    player_id
+}
+class appearances {
+    appearance_id
+    player_id
+    game_id
+}
+```
 
 ## Results
 
